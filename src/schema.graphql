@@ -1,0 +1,81 @@
+type Query {
+  bootcamp(id: ID!): Bootcamp!
+  allBootcamps: [Bootcamp!]!
+}
+
+type Mutation {
+  createBootcamp(createBootcampInput: CreateBootcampInput): Bootcamp!
+  deleteBootcamp(id: ID!): Bootcamp!
+  updateBootcamp(updateBootcampInput: UpdateBootcampInput): Bootcamp!
+}
+
+type Location {
+  type: String!
+  coordinates: Coordinates!
+  formattedAddress: String!
+  street: String!
+  city: String!
+  postalCode: String!
+  country: String!
+}
+
+type Coordinates {
+  lat: Int!
+  long: Int!
+}
+
+type Bootcamp {
+  id: ID!
+  name: String!
+  description: String!
+  website: String!
+  phone: String!
+  email: String!
+  address: String!
+  location: Location!
+  careers: [String!]!
+  # Careers should not be enum type. Use a separate document/schema for this so that it will be reusable and scalable
+  averageRating: Int!
+  photo: String!
+  jobAssistance: Boolean!
+  createdAt: Date!
+  user: User!
+}
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  role: String!
+  password: String!
+}
+
+input CreateBootcampInput {
+  id: ID!
+  name: String!
+  description: String!
+  website: String!
+  phone: String!
+  email: String!
+  address: String!
+  location: Location!
+  careers: [String!]!
+  averageRating: Int!
+  photo: String!
+  jobAssistance: Boolean!
+}
+
+input UpdateBootcampInput {
+  id: ID!
+  name: String
+  description: String
+  website: String
+  phone: String
+  email: String
+  address: String
+  location: Location
+  careers: [String!]
+  averageRating: Int
+  photo: String
+  jobAssistance: Boolean
+}
