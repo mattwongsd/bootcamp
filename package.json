@@ -11,6 +11,7 @@
   "author": "Matthew Wong",
   "license": "ISC",
   "dependencies": {
+    "apollo-errors": "^1.9.0",
     "dotenv": "^8.2.0",
     "graphql": "^15.0.0",
     "graphql-yoga": "^1.18.3",

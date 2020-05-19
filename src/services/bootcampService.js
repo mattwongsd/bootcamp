@@ -1,7 +1,13 @@
 const BootcampSchema = require("../models/Bootcamp");
+const errors = require("../utils/errors");
 
 exports.getBootcampById = async (id) => {
-  return await BootcampSchema.findById(id);
+  const result = await BootcampSchema.findById(id);
+  if (!result) {
+    const err = errors.BootcampNotFoundError(id);
+    throw new err();
+  }
+  return result;
 }
 
 exports.getAllBootcamps = async () => {
@@ -9,10 +15,15 @@ exports.getAllBootcamps = async () => {
 }
 
 exports.updateBootcamp = async ({input}) => {
-  return await BootcampSchema.findByIdAndUpdate(input.id, input, {
+  const result = await BootcampSchema.findByIdAndUpdate(input.id, input, {
     new: true,
     runValidators: true
-  });    
+  });
+  if (!result) {
+    const err = errors.BootcampNotFoundError(id);
+    throw new err();
+  }
+  return result;
 }
 
 exports.createBootcamp = async ({input}) => {
@@ -25,5 +36,10 @@ exports.createBootcamp = async ({input}) => {
 }
 
 exports.deleteBootcamp = async (id) => {
-  return await BootcampSchema.findByIdAndDelete(id);
+  const result = await BootcampSchema.findByIdAndDelete(id);
+  if (!result) {
+    const err = errors.BootcampNotFoundError(id);
+    throw new err();
+  }
+  return result;
 }
