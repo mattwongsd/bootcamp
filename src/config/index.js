@@ -1,0 +1,18 @@
+require("dotenv").config();
+
+
+const config = {
+  MONGO_CONNECTION_STRING: process.env.MONGO_CONNECTION_STRING,
+
+  TLS_KEY_PATH: process.env.TLS_KEY_PATH,
+  TLS_CERT_PATH: process.env.TLS_CERT_PATH,
+  TLS_ENABLED: process.env.TLS_ENABLED,
+
+  EXPRESS_SESSION_SECRET: process.env.EXPRESS_SESSION_SECRET,
+  
+  EXPRESS_OIDC_CLIENT_ID: process.env.EXPRESS_OIDC_CLIENT_ID,
+  EXPRESS_OIDC_ISSUER_BASEURL: process.env.EXPRESS_OIDC_ISSUER_BASEURL,
+  EXPRESS_OIDC_CLIENT_SECRET: process.env.EXPRESS_OIDC_CLIENT_SECRET,
+}
+
+module.exports = config;

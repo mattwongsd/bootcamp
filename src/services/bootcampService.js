@@ -14,8 +14,8 @@ exports.getAllBootcamps = async () => {
   return await BootcampSchema.find();
 }
 
-exports.updateBootcamp = async ({input}) => {
-  const result = await BootcampSchema.findByIdAndUpdate(input.id, input, {
+exports.updateBootcamp = async ({ input, input: { id } }) => {
+  const result = await BootcampSchema.findByIdAndUpdate(id, input, {
     new: true,
     runValidators: true
   });

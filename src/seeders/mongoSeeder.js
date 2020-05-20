@@ -53,15 +53,14 @@ const importData = async (data) => {
   }
 }
 
-const main = async () => {
-  console.log(process.env.MONGO_CONNECTION_STRING)
-  
+const main = async () => {  
   await connectToMongoDB(process.env.MONGO_CONNECTION_STRING);
   console.log("Generating boot camp seed data");
   const data = genBootcampSeedModels();
   console.log("Boot camp seed data generated!");
   console.log("Starting to import Seed data...");
   await importData(data);
+  process.exit(0);
 }
 
 main();
